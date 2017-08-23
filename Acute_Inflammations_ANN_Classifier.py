@@ -15,13 +15,12 @@ Y2 = dataset.iloc[:, 7:8].values
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
                 
-# Preprocess the Data (Label encoding
+# Preprocess the Data - Label encoding
 from sklearn.preprocessing import LabelEncoder
 le_Y = LabelEncoder()
 Y1 = le_Y.fit_transform(Y1)
 Y2 = le_Y.transform(Y2)
 
-# Scale the Data
 le_X = LabelEncoder()
 le_X.fit(X[:, 1])
 
@@ -87,5 +86,5 @@ Y2_pred = (Y2_pred > 0.5)
 
 # Check the Accuracy
 accuracy_score(Y2_pred, Y2_test)
-cm = confusion_matrix(Y1_pred, Y1_test)
+cm = confusion_matrix(Y2_pred, Y2_test)
 cm
