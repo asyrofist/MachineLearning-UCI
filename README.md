@@ -1,3 +1,3 @@
 # ML-UCI-AccuteInflammation
 
-The link for the Dataset is https://archive.ics.uci.edu/ml/datasets/Acute+Inflammations
+All the datasets are avaliable in UCI ML Repo at the link 
