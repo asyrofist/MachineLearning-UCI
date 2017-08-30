@@ -28,20 +28,20 @@ dataset.head()
 
 # ## Creating X and Y
 
-# In[5]:
+# In[4]:
 
 
 X = dataset.iloc[:, 0:11].values
 Y = dataset.iloc[:, 11].values
 
 
-# In[6]:
+# In[5]:
 
 
 X
 
 
-# In[7]:
+# In[6]:
 
 
 Y
@@ -49,46 +49,46 @@ Y
 
 # ## Preprocess the Data
 
-# In[8]:
+# In[7]:
 
 
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 
 
-# In[9]:
+# In[8]:
 
 
 le_Y = LabelEncoder()
 
 
-# In[10]:
+# In[9]:
 
 
 Y = le_Y.fit_transform(Y)
 Y
 
 
-# In[11]:
+# In[10]:
 
 
 Y = Y.reshape(len(Y), 1)
 ohe_Y = OneHotEncoder(categorical_features = [0])
 
 
-# In[12]:
+# In[11]:
 
 
 Y = ohe_Y.fit_transform(Y).toarray()
 Y
 
 
-# In[13]:
+# In[12]:
 
 
 sc_X = StandardScaler()
 
 
-# In[14]:
+# In[13]:
 
 
 X = sc_X.fit_transform(X)
@@ -97,32 +97,32 @@ X
 
 # ## Create Train and Test Data
 
-# In[15]:
+# In[14]:
 
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 4)
 
 
-# In[16]:
+# In[15]:
 
 
 X_train.shape
 
 
-# In[17]:
+# In[16]:
 
 
 X_test.shape
 
 
-# In[18]:
+# In[17]:
 
 
 Y_train.shape
 
 
-# In[19]:
+# In[18]:
 
 
 Y_test.shape
@@ -130,31 +130,20 @@ Y_test.shape
 
 # ## Create and train the Classifier
 
-# In[20]:
+# In[19]:
 
 
 from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[63]:
+# In[20]:
 
 
 clf_ann = Sequential()
 
 # First Hidden Layer
-clf_ann.add(Dense(output_dim = 36, init = 'uniform', activation = 'relu', input_dim = 11))
-
-# Second Hidden Layer
-clf_ann.add(Dense(output_dim = 72, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 108, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 144, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 180, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 216, init = 'uniform', activation = 'relu'))
+clf_ann.add(Dense(output_dim = 8, init = 'uniform', activation = 'relu', input_dim = 11))
 
 # Output Layer
 clf_ann.add(Dense(output_dim = 6, init = 'uniform', activation = 'softmax'))
@@ -164,20 +153,27 @@ clf_ann.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics =
 clf_ann.fit(X_train, Y_train, batch_size = 10, nb_epoch = 100)
 
 
-# In[64]:
+# In[21]:
 
 
 Y_pred = clf_ann.predict(X_test)
-Y_pred = (Y_pred > 0.5)
+Y_pred_class = np.argmax(Y_pred, axis = 1)
+Y_test_class = np.argmax(Y_test, axis = 1)
 
 
 # ## Check the Accuracy
 
-# In[65]:
+# In[22]:
 
 
-from sklearn.metrics import accuracy_score
-accuracy_score(Y_pred, Y_test)
+from sklearn.metrics import accuracy_score, confusion_matrix
+accuracy_score(Y_pred_class, Y_test_class)
+
+
+# In[23]:
+
+
+confusion_matrix(Y_pred_class, Y_test_class)
 
 
 # In[ ]:

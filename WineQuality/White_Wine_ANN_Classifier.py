@@ -137,22 +137,16 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[45]:
+# In[20]:
 
 
 clf_ann = Sequential()
 
 # First Hidden Layer
-clf_ann.add(Dense(output_dim = 36, init = 'uniform', activation = 'relu', input_dim = 11))
+clf_ann.add(Dense(output_dim = 9, init = 'uniform', activation = 'relu', input_dim = 11))
 
 # Second Hidden Layer
-clf_ann.add(Dense(output_dim = 72, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 108, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 144, init = 'uniform', activation = 'relu'))
-
-clf_ann.add(Dense(output_dim = 216, init = 'uniform', activation = 'relu'))
+clf_ann.add(Dense(output_dim = 18, init = 'uniform', activation = 'relu'))
 
 # Output Layer
 clf_ann.add(Dense(output_dim = 7, init = 'uniform', activation = 'softmax'))
@@ -162,24 +156,25 @@ clf_ann.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics =
 clf_ann.fit(X_train, Y_train, batch_size = 10, nb_epoch = 100)
 
 
-# In[46]:
+# In[21]:
 
 
 Y_pred = clf_ann.predict(X_test)
-Y_pred = (Y_pred > 0.5)
+Y_pred_class = np.argmax(Y_pred, axis = 1)
+Y_test_class = np.argmax(Y_test, axis = 1)
 
 
 # ## Check the Accuracy
 
-# In[47]:
+# In[22]:
 
 
-from sklearn.metrics import accuracy_score
-accuracy_score(Y_pred, Y_test)
+from sklearn.metrics import accuracy_score, confusion_matrix
+accuracy_score(Y_pred_class, Y_test_class)
 
 
-# In[ ]:
+# In[23]:
 
 
-
+confusion_matrix(Y_pred_class, Y_test_class)
 
