@@ -226,7 +226,8 @@ clf_ann.fit(X_train, Y_train, batch_size = 5, nb_epoch = 200)
 
 # Test the ANN on the Test Data
 Y_pred = clf_ann.predict(X_test)
-Y_pred = (Y_pred > 0.5)
+Y_pred_class = np.argmax(Y_pred, axis = 1)
+Y_test_class = np.argmax(Y_test, axis = 1)
 
 
 # ## Check the Accuracy
@@ -234,13 +235,19 @@ Y_pred = (Y_pred > 0.5)
 # In[32]:
 
 
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 
 # In[33]:
 
 
-accuracy_score(Y_pred, Y_test)
+accuracy_score(Y_pred_class, Y_test_class)
+
+
+# In[34]:
+
+
+confusion_matrix(Y_pred_class, Y_test_class)
 
 
 # In[ ]:
