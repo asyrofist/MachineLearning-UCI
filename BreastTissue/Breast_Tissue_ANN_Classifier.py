@@ -89,14 +89,14 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, rando
 
 # ## Create and Train the Classifier
 
-# In[12]:
+# In[13]:
 
 
 from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[67]:
+# In[14]:
 
 
 clf_ann = Sequential()
@@ -117,20 +117,27 @@ clf_ann.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics =
 clf_ann.fit(X_train, Y_train, batch_size = 5, nb_epoch = 200)
 
 
-# In[68]:
+# In[15]:
 
 
 Y_pred = clf_ann.predict(X_test)
-Y_pred = (Y_pred > 0.5)
+Y_pred_class = np.argmax(Y_pred, axis = 1)
+Y_test_class = np.argmax(Y_test, axis = 1)
 
 
 # ## Check the Accuracy
 
-# In[69]:
+# In[16]:
 
 
-from sklearn.metrics import accuracy_score
-accuracy_score(Y_pred, Y_test)
+from sklearn.metrics import accuracy_score, confusion_matrix
+accuracy_score(Y_pred_class, Y_test_class)
+
+
+# In[17]:
+
+
+confusion_matrix(Y_pred_class, Y_test_class)
 
 
 # In[ ]:
