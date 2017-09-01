@@ -162,7 +162,7 @@ clf_ann.fit(X_train, Y_train, batch_size = 5, nb_epoch = 100)
 Y_pred = clf_ann.predict(X_test)
 
 
-# ## Check the Accuracy
+# ## Check the Regression Metrics
 
 # In[22]:
 
