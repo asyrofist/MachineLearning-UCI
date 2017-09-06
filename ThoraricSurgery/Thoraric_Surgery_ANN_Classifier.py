@@ -50,7 +50,7 @@ Y.shape
 # In[7]:
 
 
-X
+X[0]
 
 
 # ## Preprocess the Data
@@ -71,7 +71,7 @@ le_Y = LabelEncoder()
 
 
 Y = le_Y.fit_transform(Y)
-Y
+Y[0]
 
 
 # In[11]:
@@ -190,7 +190,7 @@ sc_X = StandardScaler()
 
 
 X = sc_X.fit_transform(X)
-X
+X[0]
 
 
 # ## Create Train and Test Data
@@ -280,13 +280,13 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 # In[39]:
 
 
-accuracy_score(Y_pred, Y_test)
+accuracy_score(Y_test, Y_pred)
 
 
 # In[40]:
 
 
-confusion_matrix(Y_pred, Y_test)
+confusion_matrix(Y_test, Y_pred)
 
 
 # In[ ]:
