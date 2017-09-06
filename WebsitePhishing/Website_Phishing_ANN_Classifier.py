@@ -50,13 +50,13 @@ Y.shape
 # In[7]:
 
 
-X
+X[0]
 
 
 # In[8]:
 
 
-Y
+Y[0]
 
 
 # ## Preprocess the Data
@@ -77,7 +77,7 @@ le_Y = LabelEncoder()
 
 
 Y = le_Y.fit_transform(Y)
-Y
+Y[0]
 
 
 # In[12]:
@@ -91,7 +91,7 @@ ohe_Y = OneHotEncoder(categorical_features = [0])
 
 
 Y = ohe_Y.fit_transform(Y).toarray()
-Y
+Y[0]
 
 
 # In[14]:
@@ -112,7 +112,7 @@ for x in range(0, 9):
 # In[16]:
 
 
-X
+X[0]
 
 
 # In[17]:
@@ -301,13 +301,13 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 # In[41]:
 
 
-accuracy_score(Y_pred_class, Y_test_class)
+accuracy_score(Y_test_class, Y_pred_class)
 
 
 # In[42]:
 
 
-confusion_matrix(Y_pred_class, Y_test_class)
+confusion_matrix(Y_test_class, Y_pred_class)
 
 
 # In[ ]:
