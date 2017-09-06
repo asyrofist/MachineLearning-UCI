@@ -87,16 +87,10 @@ from keras.layers import Dense
 clf_ann = Sequential()
 
 # First Hidden Layer
-clf_ann.add(Dense(output_dim = 8, init = 'uniform', activation = 'relu', input_dim = 4))
+clf_ann.add(Dense(output_dim = 10, init = 'uniform', activation = 'relu', input_dim = 4))
 
 # Second Hidden Layer
-clf_ann.add(Dense(output_dim = 8, init = 'uniform', activation = 'relu'))
-
-# Third Hidden Layer
-clf_ann.add(Dense(output_dim = 8, init = 'uniform', activation = 'relu'))
-
-# Fourth Hidden Layer
-clf_ann.add(Dense(output_dim = 8, init = 'uniform', activation = 'relu'))
+#clf_ann.add(Dense(output_dim = 20, init = 'uniform', activation = 'relu'))
 
 # Output Layer
 clf_ann.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
@@ -122,13 +116,13 @@ Y_pred = (Y_pred > 0.5)
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-accuracy_score(Y_pred, Y_test)
+accuracy_score(Y_test, Y_pred)
 
 
 # In[14]:
 
 
-confusion_matrix(Y_pred, Y_test)
+confusion_matrix(Y_test, Y_pred)
 
 
 # In[ ]:
