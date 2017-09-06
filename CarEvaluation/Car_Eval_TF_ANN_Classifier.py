@@ -252,7 +252,7 @@ cost_cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labe
 optimizer = tf.train.GradientDescentOptimizer(learning_rate = 0.5).minimize(cost_cross_entropy)
 
 
-# In[38]:
+# In[34]:
 
 
 def trainTheData(num_steps, optimizer_to_use, batch_size):
@@ -303,13 +303,13 @@ def trainTheData(num_steps, optimizer_to_use, batch_size):
     return Y_pred_classes
 
 
-# In[51]:
+# In[35]:
 
 
 Y_pred_classes = trainTheData(num_steps = 2000, optimizer_to_use = optimizer, batch_size = len(X_train))
 
 
-# In[52]:
+# In[36]:
 
 
 Y_test_classes = np.argmax(Y_test, axis = 1)
@@ -317,16 +317,16 @@ Y_test_classes = np.argmax(Y_test, axis = 1)
 
 # ## Calculate the Accuracy
 
-# In[53]:
+# In[37]:
 
 
-accuracy_score(Y_pred_classes, Y_test_classes)
+accuracy_score(Y_test_classes, Y_pred_classes)
 
 
-# In[54]:
+# In[38]:
 
 
-confusion_matrix(Y_pred_classes, Y_test_classes)
+confusion_matrix(Y_test_classes, Y_pred_classes)
 
 
 # In[ ]:

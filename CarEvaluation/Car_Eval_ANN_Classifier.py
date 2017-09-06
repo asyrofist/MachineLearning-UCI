@@ -44,13 +44,13 @@ Y.shape
 # In[6]:
 
 
-X
+X[0]
 
 
 # In[7]:
 
 
-Y
+Y[0]
 
 
 # ## Preprocess the Data
@@ -79,13 +79,13 @@ for i in range(0, 6):
 # In[10]:
 
 
-X
+X[0]
 
 
 # In[11]:
 
 
-Y
+Y[0]
 
 
 # In[12]:
@@ -98,7 +98,7 @@ Y = ohe_Y.fit_transform(Y).toarray()
 # In[13]:
 
 
-Y
+Y[0]
 
 
 # In[14]:
@@ -166,7 +166,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, rando
 
 # ## Create and Train the Classifier
 
-# In[22]:
+# In[ ]:
 
 
 from keras.models import Sequential
@@ -174,7 +174,7 @@ from keras.layers import Dense
 clf_ann = Sequential()
 
 
-# In[23]:
+# In[ ]:
 
 
 # First Hidden Layer
@@ -190,7 +190,7 @@ clf_ann.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics =
 clf_ann.fit(X_train, Y_train, batch_size = 5, nb_epoch = 200)
 
 
-# In[24]:
+# In[ ]:
 
 
 Y_pred = clf_ann.predict(X_test)
@@ -200,17 +200,17 @@ Y_test_class = np.argmax(Y_test, axis = 1)
 
 # ## Check the Accuracy
 
-# In[25]:
+# In[ ]:
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-accuracy_score(Y_pred_class, Y_test_class)
+accuracy_score(Y_test_class, Y_pred_class)
 
 
-# In[26]:
+# In[ ]:
 
 
-confusion_matrix(Y_pred_class, Y_test_class)
+confusion_matrix(Y_test_class, Y_pred_class)
 
 
 # In[ ]:
