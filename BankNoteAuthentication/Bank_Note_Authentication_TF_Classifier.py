@@ -242,13 +242,13 @@ Y_test_classes = np.argmax(Y_test, axis = 1)
 # In[27]:
 
 
-accuracy_score(Y_pred_classes, Y_test_classes)
+accuracy_score(Y_test_classes, Y_pred_classes)
 
 
 # In[28]:
 
 
-confusion_matrix(Y_pred_classes, Y_test_classes)
+confusion_matrix(Y_test_classes, Y_pred_classes)
 
 
 # In[ ]:
