@@ -80,13 +80,13 @@ X.shape[1]
 # In[11]:
 
 
-X
+X[0]
 
 
 # In[12]:
 
 
-Y
+Y[0]
 
 
 # ## Preprocess the Data
@@ -101,7 +101,7 @@ le_Y = LabelEncoder()
 
 
 Y = le_Y.fit_transform(Y)
-Y
+Y[0]
 
 
 # In[15]:
@@ -122,7 +122,7 @@ for x in range(0, X.shape[1] - 1):
 # In[17]:
 
 
-X
+X[0]
 
 
 # In[18]:
@@ -159,58 +159,58 @@ X = X[:, 1:]
 X.shape
 
 
-# In[59]:
+# In[23]:
 
 
 sc_X = StandardScaler()
 
 
-# In[60]:
+# In[24]:
 
 
 X = sc_X.fit_transform(X)
-X
+X[0]
 
 
 # ## Create Train and Test data
 
-# In[61]:
+# In[25]:
 
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 0)
 
 
-# In[62]:
+# In[26]:
 
 
 X_train.shape
 
 
-# In[63]:
+# In[27]:
 
 
 X_test.shape
 
 
-# In[64]:
+# In[28]:
 
 
 Y_train.shape
 
 
-# In[65]:
+# In[29]:
 
 
 Y_test.shape
 
 
-# In[66]:
+# In[30]:
 
 
 pd.DataFrame(pd.DataFrame(Y_train)[0].value_counts())
 
 
-# In[67]:
+# In[31]:
 
 
 pd.DataFrame(pd.DataFrame(Y_test)[0].value_counts())
@@ -218,205 +218,198 @@ pd.DataFrame(pd.DataFrame(Y_test)[0].value_counts())
 
 # ## Decision Tree Classifier
 
-# In[68]:
+# In[32]:
 
 
 clf_dt = DecisionTreeClassifier(criterion = 'entropy')
 
 
-# In[69]:
+# In[33]:
 
 
 clf_dt.fit(X_train, Y_train)
 
 
-# In[70]:
+# In[34]:
 
 
 Y_pred_dt = clf_dt.predict(X_test)
 
 
-# In[71]:
+# In[35]:
 
 
-cm_dt = confusion_matrix(Y_pred_dt, Y_test)
-cm_dt
+confusion_matrix(Y_test, Y_pred_dt)
 
 
 # ## Random Forest Classifier
 
-# In[72]:
+# In[36]:
 
 
 clf_rf = RandomForestClassifier(n_estimators = 10, criterion = 'entropy')
 
 
-# In[73]:
+# In[37]:
 
 
 clf_rf.fit(X_train, Y_train)
 
 
-# In[74]:
+# In[38]:
 
 
 Y_pred_rf = clf_rf.predict(X_test)
 
 
-# In[75]:
+# In[39]:
 
 
-cm_rf = confusion_matrix(Y_pred_rf, Y_test)
-cm_rf
+confusion_matrix(Y_test, Y_pred_rf)
 
 
 # ## Naive Bayes Classifier
 
-# In[76]:
+# In[40]:
 
 
 clf_nb = GaussianNB()
 
 
-# In[77]:
+# In[41]:
 
 
 clf_nb.fit(X_train, Y_train)
 
 
-# In[78]:
+# In[42]:
 
 
 Y_pred_nb = clf_nb.predict(X_test)
 
 
-# In[79]:
+# In[43]:
 
 
-cm_nb = confusion_matrix(Y_pred_nb, Y_test)
-cm_nb
+confusion_matrix(Y_test, Y_pred_nb)
 
 
 # ## KNN Classifier
 
-# In[80]:
+# In[44]:
 
 
 clf_knn = KNeighborsClassifier(n_neighbors = 5)
 
 
-# In[81]:
+# In[45]:
 
 
 clf_knn.fit(X_train, Y_train)
 
 
-# In[82]:
+# In[46]:
 
 
 Y_pred_knn = clf_knn.predict(X_test)
 
 
-# In[83]:
+# In[47]:
 
 
-cm_knn = confusion_matrix(Y_pred_knn, Y_test)
-cm_knn
+confusion_matrix(Y_test, Y_pred_knn)
 
 
 # ## Logistic Regression
 
-# In[84]:
+# In[48]:
 
 
 clf_lr = LogisticRegression()
 
 
-# In[85]:
+# In[49]:
 
 
 clf_lr.fit(X_train, Y_train)
 
 
-# In[86]:
+# In[50]:
 
 
 Y_pred_lr = clf_lr.predict(X_test)
 
 
-# In[87]:
+# In[51]:
 
 
-cm_lr = confusion_matrix(Y_pred_lr, Y_test)
-cm_lr
+confusion_matrix(Y_test, Y_pred_lr)
 
 
 # ## SVC Linear
 
-# In[88]:
+# In[52]:
 
 
 clf_lsvc = SVC(kernel = "linear")
 
 
-# In[89]:
+# In[53]:
 
 
 clf_lsvc.fit(X_train, Y_train)
 
 
-# In[90]:
+# In[54]:
 
 
 Y_pred_lsvc = clf_lsvc.predict(X_test)
 
 
-# In[91]:
+# In[55]:
 
 
-cm_lsvc = confusion_matrix(Y_pred_lsvc, Y_test)
-cm_lsvc
+confusion_matrix(Y_test, Y_pred_lsvc)
 
 
 # ## SVC Kernel
 
-# In[92]:
+# In[56]:
 
 
 clf_ksvc = SVC(kernel = "rbf")
 
 
-# In[93]:
+# In[57]:
 
 
 clf_ksvc.fit(X_train, Y_train)
 
 
-# In[94]:
+# In[58]:
 
 
 Y_pred_ksvc = clf_ksvc.predict(X_test)
 
 
-# In[95]:
+# In[59]:
 
 
-cm_ksvc = confusion_matrix(Y_pred_ksvc, Y_test)
-cm_ksvc
+confusion_matrix(Y_test, Y_pred_ksvc)
 
 
 # ## Accuracy of Various Classifiers
 
-# In[96]:
+# In[60]:
 
 
-model_accuracies['DT'] = accuracy_score(Y_pred_dt, Y_test)
-model_accuracies['KNN'] = accuracy_score(Y_pred_knn, Y_test)
-model_accuracies['KernelSVC'] = accuracy_score(Y_pred_ksvc, Y_test)
-model_accuracies['LinearSVC'] = accuracy_score(Y_pred_lsvc, Y_test)
-model_accuracies['LogReg'] = accuracy_score(Y_pred_lr, Y_test)
-model_accuracies['NB'] = accuracy_score(Y_pred_nb, Y_test)
-model_accuracies['RF'] = accuracy_score(Y_pred_rf, Y_test)
+model_accuracies['DT'] = accuracy_score(Y_test, Y_pred_dt)
+model_accuracies['KNN'] = accuracy_score(Y_test, Y_pred_knn)
+model_accuracies['KernelSVC'] = accuracy_score(Y_test, Y_pred_ksvc)
+model_accuracies['LinearSVC'] = accuracy_score(Y_test, Y_pred_lsvc)
+model_accuracies['LogReg'] = accuracy_score(Y_test, Y_pred_lr)
+model_accuracies['NB'] = accuracy_score(Y_test, Y_pred_nb)
+model_accuracies['RF'] = accuracy_score(Y_test, Y_pred_rf)
 model_accuracies
 
 
