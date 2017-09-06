@@ -68,7 +68,7 @@ X[:, 4] = le_Y.transform(X[:, 4])
 # In[8]:
 
 
-X
+X[0]
 
 
 # In[9]:
@@ -148,11 +148,11 @@ Y_pred = (Y_pred > 0.5)
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-accuracy_score(Y_pred, Y_test)
+accuracy_score(Y_test, Y_pred)
 
 
 # In[17]:
 
 
-confusion_matrix(Y_pred, Y_test)
+confusion_matrix(Y_test, Y_pred)
 
