@@ -48,7 +48,7 @@ X = sc_X.fit_transform(X)
 # In[6]:
 
 
-X
+X[0]
 
 
 # In[7]:
@@ -75,7 +75,7 @@ ohey = OneHotEncoder(categorical_features = [0])
 
 
 Y = ohey.fit_transform(Y).toarray()
-Y
+Y[0]
 
 
 # ## Create Train and Test Data
@@ -89,14 +89,14 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, rando
 
 # ## Create and Train the Classifier
 
-# In[13]:
+# In[12]:
 
 
 from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[14]:
+# In[13]:
 
 
 clf_ann = Sequential()
@@ -117,7 +117,7 @@ clf_ann.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics =
 clf_ann.fit(X_train, Y_train, batch_size = 5, nb_epoch = 200)
 
 
-# In[15]:
+# In[14]:
 
 
 Y_pred = clf_ann.predict(X_test)
@@ -127,17 +127,17 @@ Y_test_class = np.argmax(Y_test, axis = 1)
 
 # ## Check the Accuracy
 
-# In[16]:
+# In[15]:
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-accuracy_score(Y_pred_class, Y_test_class)
+accuracy_score(Y_test_class, Y_pred_class)
 
 
-# In[17]:
+# In[16]:
 
 
-confusion_matrix(Y_pred_class, Y_test_class)
+confusion_matrix(Y_test_class, Y_pred_class)
 
 
 # In[ ]:
