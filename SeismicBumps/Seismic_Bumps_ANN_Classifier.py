@@ -50,13 +50,13 @@ Y.shape
 # In[7]:
 
 
-X
+X[0]
 
 
 # In[8]:
 
 
-Y
+Y[0]
 
 
 # ## Preprocess the Data
@@ -77,7 +77,7 @@ le_Y = LabelEncoder()
 
 
 Y = le_Y.fit_transform(Y)
-Y
+Y[0]
 
 
 # In[12]:
@@ -104,7 +104,7 @@ for x in to_be_encoded_indices:
 # In[15]:
 
 
-X
+X[0]
 
 
 # In[16]:
@@ -145,7 +145,7 @@ sc_X = StandardScaler()
 
 
 X = sc_X.fit_transform(X)
-X
+X[0]
 
 
 # ## Create Train and Test Data
@@ -207,7 +207,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[46]:
+# In[31]:
 
 
 clf_ann = Sequential()
@@ -218,12 +218,7 @@ clf_ann = Sequential()
 # First Hidden Layer
 clf_ann.add(Dense(output_dim = 40, init = 'uniform', activation = 'relu', input_dim = 20))
 
-# Second Hidden Layer
-#clf_ann.add(Dense(output_dim = 20, init = 'uniform', activation = 'relu'))
-
 clf_ann.add(Dense(output_dim = 40, init = 'uniform', activation = 'relu'))
-
-#clf_ann.add(Dense(output_dim = 80, init = 'uniform', activation = 'relu'))
 
 clf_ann.add(Dense(output_dim = 160, init = 'uniform', activation = 'relu'))
 
@@ -237,7 +232,7 @@ clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['ac
 clf_ann.fit(X_train, Y_train, batch_size = 10, nb_epoch = 100)
 
 
-# In[47]:
+# In[32]:
 
 
 # Test the ANN on the Test Data
@@ -247,22 +242,22 @@ Y_pred = (Y_pred > 0.5)
 
 # ## Check the Accuracy
 
-# In[48]:
+# In[33]:
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 
-# In[49]:
+# In[34]:
 
 
-accuracy_score(Y_pred, Y_test)
+accuracy_score(Y_test, Y_pred)
 
 
-# In[50]:
+# In[35]:
 
 
-confusion_matrix(Y_pred, Y_test)
+confusion_matrix(Y_test, Y_pred)
 
 
 # In[ ]:
