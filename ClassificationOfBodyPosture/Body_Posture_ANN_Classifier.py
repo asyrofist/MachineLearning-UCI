@@ -50,13 +50,13 @@ Y.shape
 # In[7]:
 
 
-X
+X[0]
 
 
 # In[8]:
 
 
-Y
+Y[0]
 
 
 # ## Preprocess the Data
@@ -82,7 +82,7 @@ Y = le_Y.fit_transform(Y)
 # In[12]:
 
 
-Y
+Y[0]
 
 
 # In[13]:
@@ -101,7 +101,7 @@ Y = ohe_Y.fit_transform(Y).toarray()
 # In[15]:
 
 
-Y
+Y[0]
 
 
 # In[16]:
@@ -119,7 +119,7 @@ X[:, 0] = le_X.fit_transform(X[:, 0])
 # In[18]:
 
 
-X
+X[0]
 
 
 # In[19]:
@@ -137,7 +137,7 @@ X = sc_X.fit_transform(X)
 # In[21]:
 
 
-X
+X[0]
 
 
 # ## Create Train and Test Data
@@ -187,7 +187,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[34]:
+# In[29]:
 
 
 clf_ann = Sequential()
@@ -208,7 +208,7 @@ clf_ann.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics =
 clf_ann.fit(X_train, Y_train, batch_size = 10, nb_epoch = 100)
 
 
-# In[35]:
+# In[30]:
 
 
 # Test the ANN on the Test Data
@@ -219,22 +219,22 @@ Y_test_class = np.argmax(Y_test, axis = 1)
 
 # ## Check the Accuracy
 
-# In[36]:
+# In[31]:
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 
-# In[37]:
+# In[32]:
 
 
-accuracy_score(Y_pred_class, Y_test_class)
+accuracy_score(Y_test_class, Y_pred_class)
 
 
-# In[38]:
+# In[33]:
 
 
-confusion_matrix(Y_pred_class, Y_test_class)
+confusion_matrix(Y_test_class, Y_pred_class)
 
 
 # In[ ]:
