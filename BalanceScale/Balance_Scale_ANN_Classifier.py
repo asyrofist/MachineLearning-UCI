@@ -120,13 +120,13 @@ Y_test_class = np.argmax(Y_test, axis = 1)
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-accuracy_score(Y_pred_class, Y_test_class)
+accuracy_score(Y_test_class, Y_pred_class)
 
 
 # In[15]:
 
 
-confusion_matrix(Y_pred_class, Y_test_class)
+confusion_matrix(Y_test_class, Y_pred_class)
 
 
 # In[ ]:

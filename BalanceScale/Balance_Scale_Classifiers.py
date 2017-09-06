@@ -153,7 +153,7 @@ Y_pred_dt = clf_dt.predict(X_test)
 # In[22]:
 
 
-cm_dt = confusion_matrix(Y_pred_dt, Y_test)
+cm_dt = confusion_matrix(Y_test, Y_pred_dt)
 cm_dt
 
 
@@ -180,7 +180,7 @@ Y_pred_rf = clf_rf.predict(X_test)
 # In[26]:
 
 
-cm_rf = confusion_matrix(Y_pred_rf, Y_test)
+cm_rf = confusion_matrix(Y_test, Y_pred_rf)
 cm_rf
 
 
@@ -207,7 +207,7 @@ Y_pred_nb = clf_nb.predict(X_test)
 # In[30]:
 
 
-cm_nb = confusion_matrix(Y_pred_nb, Y_test)
+cm_nb = confusion_matrix(Y_test, Y_pred_nb)
 cm_nb
 
 
@@ -234,7 +234,7 @@ Y_pred_knn = clf_knn.predict(X_test)
 # In[34]:
 
 
-cm_knn = confusion_matrix(Y_pred_knn, Y_test)
+cm_knn = confusion_matrix(Y_test, Y_pred_knn)
 cm_knn
 
 
@@ -261,7 +261,7 @@ Y_pred_lr = clf_lr.predict(X_test)
 # In[38]:
 
 
-cm_lr = confusion_matrix(Y_pred_lr, Y_test)
+cm_lr = confusion_matrix(Y_test, Y_pred_lr)
 cm_lr
 
 
@@ -288,7 +288,7 @@ Y_pred_lsvc = clf_lsvc.predict(X_test)
 # In[42]:
 
 
-cm_lsvc = confusion_matrix(Y_pred_lsvc, Y_test)
+cm_lsvc = confusion_matrix(Y_test, Y_pred_lsvc)
 cm_lsvc
 
 
@@ -315,7 +315,7 @@ Y_pred_ksvc = clf_ksvc.predict(X_test)
 # In[46]:
 
 
-cm_ksvc = confusion_matrix(Y_pred_ksvc, Y_test)
+cm_ksvc = confusion_matrix(Y_test, Y_pred_ksvc)
 cm_ksvc
 
 
@@ -324,12 +324,12 @@ cm_ksvc
 # In[47]:
 
 
-model_accuracies['DT'] = accuracy_score(Y_pred_dt, Y_test)
-model_accuracies['KNN'] = accuracy_score(Y_pred_knn, Y_test)
-model_accuracies['KernelSVC'] = accuracy_score(Y_pred_ksvc, Y_test)
-model_accuracies['LinearSVC'] = accuracy_score(Y_pred_lsvc, Y_test)
-model_accuracies['LogReg'] = accuracy_score(Y_pred_lr, Y_test)
-model_accuracies['NB'] = accuracy_score(Y_pred_nb, Y_test)
-model_accuracies['RF'] = accuracy_score(Y_pred_rf, Y_test)
+model_accuracies['DT'] = accuracy_score(Y_test, Y_pred_dt)
+model_accuracies['KNN'] = accuracy_score(Y_test, Y_pred_knn)
+model_accuracies['KernelSVC'] = accuracy_score(Y_test, Y_pred_ksvc)
+model_accuracies['LinearSVC'] = accuracy_score(Y_test, Y_pred_lsvc)
+model_accuracies['LogReg'] = accuracy_score(Y_test, Y_pred_lr)
+model_accuracies['NB'] = accuracy_score(Y_test, Y_pred_nb)
+model_accuracies['RF'] = accuracy_score(Y_test, Y_pred_rf)
 model_accuracies
 

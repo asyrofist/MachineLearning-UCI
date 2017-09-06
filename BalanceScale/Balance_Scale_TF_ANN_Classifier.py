@@ -235,13 +235,13 @@ def trainTheData(num_steps, optimizer_to_use, batch_size):
     return Y_pred_classes
 
 
-# In[37]:
+# In[27]:
 
 
 Y_pred_classes = trainTheData(num_steps = 1000, optimizer_to_use = optimizer, batch_size = len(X_train))
 
 
-# In[38]:
+# In[28]:
 
 
 Y_test_classes = np.argmax(Y_test, axis = 1)
@@ -249,16 +249,16 @@ Y_test_classes = np.argmax(Y_test, axis = 1)
 
 # ## Check the Accuracy
 
-# In[39]:
+# In[29]:
 
 
-accuracy_score(Y_pred_classes, Y_test_classes)
+accuracy_score(Y_test_classes, Y_pred_classes)
 
 
-# In[40]:
+# In[30]:
 
 
-confusion_matrix(Y_pred_classes, Y_test_classes)
+confusion_matrix(Y_test_classes, Y_pred_classes)
 
 
 # In[ ]:
