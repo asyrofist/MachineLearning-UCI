@@ -50,13 +50,13 @@ Y.shape
 # In[7]:
 
 
-X
+X[0]
 
 
 # In[8]:
 
 
-Y
+Y[0]
 
 
 # ## Preprocess the Data
@@ -82,7 +82,7 @@ Y = le_Y.fit_transform(Y)
 # In[12]:
 
 
-Y
+Y[0]
 
 
 # In[13]:
@@ -100,7 +100,7 @@ X = sc_X.fit_transform(X)
 # In[15]:
 
 
-X
+X[0]
 
 
 # ## Create Train and Test Data
@@ -162,7 +162,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 
-# In[36]:
+# In[25]:
 
 
 clf_ann = Sequential()
@@ -180,7 +180,7 @@ clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['ac
 clf_ann.fit(X_train, Y_train, batch_size = 5, nb_epoch = 200)
 
 
-# In[37]:
+# In[26]:
 
 
 # Test the ANN on the Test Data
@@ -190,22 +190,22 @@ Y_pred = (Y_pred > 0.5)
 
 # ## Check the Accuracy
 
-# In[38]:
+# In[27]:
 
 
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 
-# In[39]:
+# In[28]:
 
 
-accuracy_score(Y_pred, Y_test)
+accuracy_score(Y_test, Y_pred)
 
 
-# In[40]:
+# In[29]:
 
 
-confusion_matrix(Y_pred, Y_test)
+confusion_matrix(Y_test, Y_pred)
 
 
 # In[ ]:
