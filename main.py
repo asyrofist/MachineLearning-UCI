@@ -14,15 +14,11 @@ dataset = pd.read_csv('data/'+file_data+'.data', header = None, delimiter = r"\s
 hasil = dataset.head()
 st.write(hasil)
 
-options = st.multiselect('What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue'],['Yellow', 'Red'])
-st.write('You selected:', options)
-
 X = dataset.iloc[:, 0:6].values
 Y1 = dataset.iloc[:, 6:7].values
 Y2 = dataset.iloc[:, 7:8].values
-st.write(X)
-st.write(Y1)
-st.write(Y2)
+options = st.multiselect('What are your favorite colors',[X, Y1, Y2],[X, Y1, Y2])
+st.write('You selected:', options)
 
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
