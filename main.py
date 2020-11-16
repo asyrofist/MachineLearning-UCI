@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # dataset
 st.write("""
@@ -25,10 +26,18 @@ Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
 
 st.subheader("Data Parameter")
-st.write(X)
+fig, ax = plt.subplots()
+ax.hist(X, bins=20)
+st.pyplot(fig)
+
 col3, col4 = st.beta_columns([3,1])
-col3.area_chart(Y1)
+pic1, ax = plt.subplots()
+ax.hist(Y1, bins=20)
+col3.pyplot(pic1)
 col4.write(Y1)
+
 col5, col6 = st.beta_columns([3,1])
-col5.area_chart(Y2)
+pic2, ax = plt.subplots()
+ax.hist(X, bins=20)
+col5.pyplot(pic2)
 col6.write(Y2)
