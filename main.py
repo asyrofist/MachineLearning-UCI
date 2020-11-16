@@ -83,8 +83,8 @@ X2_train, X2_test, Y2_train, Y2_test = train_test_split(X, Y2, test_size = 0.2, 
 
 # model
 clf_ann = Sequential()
-clf_ann.add(Dense(3, init = 'uniform', activation = 'relu', input_dim = 6)) # First Hidden Layer
-clf_ann.add(Dense(1, init = 'uniform', activation = 'sigmoid')) # Output Layer
+clf_ann.add(Dense(3, activation = 'relu', kernel_initializer='glorot_uniform', input_dim = 6)) # First Hidden Layer
+clf_ann.add(Dense(1, activation = 'sigmoid', kernel_initializer='glorot_uniform')) # Output Layer
 clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy']) # Compile the ANN
 clf_ann.fit(X1_train, Y1_train, batch_size = 5, nb_epoch = 200) # Train the ANN on the Training Set
 
