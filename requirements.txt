@@ -6,3 +6,4 @@ keras
 matplotlib
 plotly
 tensorflow
+seaborn
