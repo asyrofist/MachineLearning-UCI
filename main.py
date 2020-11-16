@@ -20,7 +20,7 @@ start_Y1, end_Y1 = st.sidebar.select_slider('Select Range?',options=[0, 1, 2, 3,
 start_Y2, end_Y2 = st.sidebar.select_slider('Select Range Y2?',options= [0, 1, 2, 3, 4, 5, 6, 7, 8],value= (end_Y1, end_Y1+1))
 X = dataset.iloc[:, start_X:end_X].values
 st.write(X)
-Y1 = dataset.iloc[:, start_Y1:end_Y2].values
+Y1 = dataset.iloc[:, start_Y1:end_Y1].values
 st.write(Y1)
 Y2 = dataset.iloc[:, start_Y2:end_Y2].value
 st.write(Y2)
