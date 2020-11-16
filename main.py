@@ -87,6 +87,8 @@ clf_ann.add(Dense(output_dim = 3, init = 'uniform', activation = 'relu', input_d
 clf_ann.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid')) # Output Layer
 clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy']) # Compile the ANN
 clf_ann.fit(X1_train, Y1_train, batch_size = 5, nb_epoch = 200) # Train the ANN on the Training Set
+
+
 Y1_pred = clf_ann.predict(X1_test) # Test the ANN on the Test Data
 Y1_pred = (Y1_pred > 0.5)
 akurasi = accuracy_score(Y1_test, Y1_pred)
