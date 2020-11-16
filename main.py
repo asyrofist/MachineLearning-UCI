@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.figure_factory as ff
 
 # dataset
 st.write("""
@@ -25,18 +26,20 @@ Y2 = dataset.iloc[:, start_Y2:end_Y2].values
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
 
-col1, col2 = st.beta_columns([2,2])
-pic0, ax = plt.subplots()
-ax.hist(X, bins=20)
-col1.pyplot(pic0)
-col2.write(X)
 
+# Create distplot with custom bin_size
+st.subheader("X Parameter")
+pic0 = ff.create_distplot(X)
+st.plotly_chart(pic0, use_container_width=True)
+
+st.subheader("Y1 Parameter")
 col3, col4 = st.beta_columns([3,1])
 pic1, ax = plt.subplots()
 ax.hist(Y1, bins=20)
 col3.pyplot(pic1)
 col4.write(Y1)
 
+st.subheader("X Parameter")
 col5, col6 = st.beta_columns([3,1])
 pic2, ax = plt.subplots()
 ax.hist(Y2, bins=20)
