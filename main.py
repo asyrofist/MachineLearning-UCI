@@ -11,6 +11,5 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
 st.header("UCI Dataset")
-with open("AcuteInflammations/diagnosis.data", 'rb') as csvfile:
-     spamreader = pd.read_csv(csvfile, header = None, delimiter= r"\s+")
-st.dataframe(spamreader)
+dataset = pd.read_csv("AcuteInflammations/diagnosis.data", header = None, delimiter= r"\s+")
+st.dataframe(dataset)
