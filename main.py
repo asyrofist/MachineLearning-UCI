@@ -12,4 +12,4 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 st.header("UCI Dataset")
 with open("AcuteInflammations/diagnosis.data", 'rb') as f:
   dataset = f.read()
-st.write(dataset)
+st.dataframe(dataset)
