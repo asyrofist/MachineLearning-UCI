@@ -19,7 +19,7 @@ X = dataset.iloc[:, 0:6].values
 Y1 = dataset.iloc[:, 6:7].values
 Y2 = dataset.iloc[:, 7:8].values
 nilai_list = st.multiselect('What are your favorite colors',[X, Y1, Y2],[X])
-st.write(nilai_list)
+st.dataframe(nilai_list)
 
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
