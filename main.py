@@ -79,6 +79,10 @@ st.write(X)
 
 st.header("Create and Train the Classifier for Y1")
 X1_train, X1_test, Y1_train, Y1_test = train_test_split(X, Y1, test_size = 0.2, random_state = 4)
+X1_train  = np.asarray(X1_train).astype(np.float32)
+X1_test   = np.asarray(X1_test).astype(np.float32)
+Y1_train  = np.asarray(Y1_train).astype(np.float32)
+Y1_test   = np.asarray(Y1_test).astype(np.float32)
 
 # model
 clf_ann = Sequential()
