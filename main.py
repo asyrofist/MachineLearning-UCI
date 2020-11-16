@@ -10,6 +10,6 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
 st.header("UCI Dataset")
-with open("AcuteInflammations/diagnosis.data", r"\s+") as f:
-  dataset = f.read()
+with open("AcuteInflammations/diagnosis.data", 'rb') as f:
+  dataset = f.read(header = None, delimiter = r"\s+")
 st.write(dataset)
