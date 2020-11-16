@@ -10,6 +10,6 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 
 st.header("UCI Dataset")
 option = st.sidebar.selectbox('How would you like to be contacted?',['diagnosis', 'yeast', 'wine'])
-dataset = pd.read_csv('data/'+option, header = None, delimiter = r"\s+", encoding = "utf-16")
+dataset = pd.read_csv('data/'+option+'.data', header = None, delimiter = r"\s+", encoding = "utf-16")
 hasil = dataset.head()
 st.write(hasil)
