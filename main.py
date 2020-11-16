@@ -10,8 +10,7 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 
 st.header("UCI Dataset")
 with open("AcuteInflammations/diagnosis.data", encoding="utf8", errors='ignore') as dataset:
-# dataset = pd.read_csv("AcuteInflammations/diagnosis.data", header = None, delimiter = r"\s+")
-X = dataset.iloc[:, 0:6].values
-Y1 = dataset.iloc[:, 6:7].values
-Y2 = dataset.iloc[:, 7:8].values
-st.dataframe(X)
+  X = dataset.iloc[:, 0:6].values
+  Y1 = dataset.iloc[:, 6:7].values
+  Y2 = dataset.iloc[:, 7:8].values
+  st.dataframe(X)
