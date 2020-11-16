@@ -86,7 +86,7 @@ clf_ann = Sequential()
 clf_ann.add(Dense(3, activation = 'relu', kernel_initializer='glorot_uniform', input_dim = 6)) # First Hidden Layer
 clf_ann.add(Dense(1, activation = 'sigmoid', kernel_initializer='glorot_uniform')) # Output Layer
 clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy']) # Compile the ANN
-clf_ann.fit(X1_train, Y1_train, batch_size = 5, nb_epoch = 200) # Train the ANN on the Training Set
+clf_ann.fit(X1_train, Y1_train, batch_size = 5, epoch = 200) # Train the ANN on the Training Set
 
 
 Y1_pred = clf_ann.predict(X1_test) # Test the ANN on the Test Data
