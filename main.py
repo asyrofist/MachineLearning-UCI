@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import plotly.figure_factory as ff
+from sklearn.preprocessing import LabelEncoder
+
 
 # dataset
 st.write("""
@@ -10,7 +11,7 @@ st.write("""
 Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
-st.header("UCI Dataset")
+st.header("Importing Data")
 file_data = st.sidebar.selectbox('How would you like to be contacted?',['diagnosis', 'yeast', 'wine'])
 dataset = pd.read_csv('data/'+file_data+'.data', header = None, delimiter = r"\s+", encoding = "utf-16")
 hasil = dataset.head()
@@ -44,3 +45,21 @@ pic2, ax = plt.subplots()
 ax.hist(Y2, bins=20)
 col5.pyplot(pic2)
 col6.write(Y2)
+
+st.header("Preprocess the Data")
+le_Y = LabelEncoder()
+Y1 = le_Y.fit_transform(Y1)
+Y2 = le_Y.transform(Y2)
+st.write(Y1)
+st.write(Y2)
+
+le_X = LabelEncoder()
+le_X.fit(X[:, 1])
+
+X[:, 1] = le_X.transform(X[:, 1])
+X[:, 2] = le_X.transform(X[:, 2])
+X[:, 3] = le_X.transform(X[:, 3])
+X[:, 4] = le_X.transform(X[:, 4])
+X[:, 5] = le_X.transform(X[:, 5])
+st.write(X)
+
