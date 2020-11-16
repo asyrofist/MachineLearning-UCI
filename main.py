@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import io
+import csv
+
 
 # dataset
 st.write("""
@@ -10,5 +11,8 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
 st.header("UCI Dataset")
-dataset = pd.read_csv("AcuteInflammations/diagnosis.data") 
-st.dataframe(dataset)
+with open("AcuteInflammations/diagnosis.data", 'rb') as csvfile:
+     spamreader = pd.read_csv(csvfile, delimiter= r"\s+")
+#      for row in spamreader:
+#          print ', '.join(row)
+st.dataframe(spamreader)
