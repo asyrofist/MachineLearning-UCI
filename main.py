@@ -21,9 +21,7 @@ start_Y2, end_Y2 = st.sidebar.select_slider('Select Y2 range?',options=[0, 1, 2,
 X = dataset.iloc[:, start_X:end_X].values
 Y1 = dataset.iloc[:, start_Y1:end_Y1].values
 Y2 = dataset.iloc[:, start_Y2:end_Y2].values
-st.dataframe(X, Y1, Y2)
-
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
-# st.write(Y1)
-# st.write(Y2)
+st.write(Y1)
+st.write(Y2)
