@@ -29,7 +29,7 @@ Y2 = Y2.reshape(len(Y2), 1)
 
 # Create distplot with custom bin_size
 st.subheader("X Parameter")
-st.bar_chart(X)
+st.write(X)
 
 st.subheader("Y1 Parameter")
 col3, col4 = st.beta_columns([3,1])
