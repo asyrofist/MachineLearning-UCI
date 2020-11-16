@@ -13,5 +13,4 @@ dataset = pd.read_csv("AcuteInflammations/diagnosis.data", header = None, delimi
 X = dataset.iloc[:, 0:6].values
 Y1 = dataset.iloc[:, 6:7].values
 Y2 = dataset.iloc[:, 7:8].values
-a = dataset.head()
-st.dataframe(a)
+st.dataframe(dataset)
