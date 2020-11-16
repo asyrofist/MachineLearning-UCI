@@ -13,4 +13,5 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 st.header("UCI Dataset")
 with open("AcuteInflammations/diagnosis.data") as csvfile:
   dataset = csv.DictReader(csvfile)
-st.write(dataset)
+  for row in dataset:
+     st,dataframe(row)
