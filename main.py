@@ -10,6 +10,5 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
 st.header("UCI Dataset")
-with open("AcuteInflammations/diagnosis.data", 'rb') as f:
-  dataset = f.read()
+dataset = pd.read_csv("AcuteInflammations/diagnosis.data") 
 st.dataframe(dataset)
