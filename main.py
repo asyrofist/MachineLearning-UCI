@@ -15,9 +15,9 @@ hasil = dataset.head()
 st.write(hasil)
 
 # variable
-X = dataset.iloc[:, 0:5].values
-Y1 = dataset.iloc[:, 5:6].values
-Y2 = dataset.iloc[:, 6:7].value
+X = dataset.iloc[:, 0:6].values
+Y1 = dataset.iloc[:, 6:7].values
+Y2 = dataset.iloc[:, 7:8].values
 st.write(X)
 st.write(Y1)
 st.write(Y2)
