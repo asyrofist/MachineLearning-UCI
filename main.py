@@ -15,6 +15,11 @@ hasil = dataset.head()
 st.write(hasil)
 
 # variable
+nilai_list1 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[0, 6])
+nilai_list2 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[6, 7])
+nilai_list3 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[6, 7])
+st.write(nilai_list1, nilai_list2, nilai_list3)
+
 X = dataset.iloc[:, 0:6].values
 Y1 = dataset.iloc[:, 6:7].values
 Y2 = dataset.iloc[:, 7:8].values
@@ -22,8 +27,6 @@ st.write(X)
 st.write(Y1)
 st.write(Y2)
 
-nilai_list = st.multiselect('What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue'],['Yellow', 'Red'])
-st.write(nilai_list)
 
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
