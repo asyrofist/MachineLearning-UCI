@@ -14,9 +14,9 @@ dataset = pd.read_csv('data/'+file_data+'.data', header = None, delimiter = r"\s
 hasil = dataset.head()
 st.write(hasil)
 
-start_X, end_X = st.sidebar.select_slider('Select Range X?',options= [0, 6, 8],value= (0, 6))
-start_Y1, end_Y2 = st.sidebar.select_slider('Select Range?',options=[0, 6, 8],value=(6, 7))
-start_Y2, end_Y2 = st.sidebar.select_slider('Select Range Y2?',options= [0, 6, 8],value= (7, 8))
+start_X, end_X = st.sidebar.select_slider('Select Range X?',options= [0, 1, 2, 3, 4, 5, 6, 8],value= (0, 6))
+start_Y1, end_Y2 = st.sidebar.select_slider('Select Range?',options=[0, 1, 2, 3, 5, 6, 7, 8],value=(6, 7))
+start_Y2, end_Y2 = st.sidebar.select_slider('Select Range Y2?',options= [0, 1, 2, 3, 4, 5, 6, 7, 8],value= (7, 8))
 X = dataset.iloc[:, start_X:end_X].values
 st.write(X)
 xY1 = dataset.iloc[:, end_X:end_X+1].values
