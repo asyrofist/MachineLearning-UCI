@@ -23,5 +23,5 @@ st.write(Y2)
 
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
-st.write(Y1)
-st.write(Y2)
+# st.write(Y1)
+# st.write(Y2)
