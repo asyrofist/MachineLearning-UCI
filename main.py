@@ -9,6 +9,5 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
 st.header("UCI Dataset")
-# dataset = pd.read_csv("AcuteInflammations/diagnosis.data", header = None, delimiter = r"\s+")
-dataset = pd.read_csv("AcuteInflammations/diagnosis.data")
+with open("AcuteInflammations/diagnosis.data", encoding="utf8", errors='ignore') as dataset:
 st.write(dataset)
