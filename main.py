@@ -17,10 +17,10 @@ st.write(hasil)
 start_X, end_X = st.sidebar.select_slider('Select Range?',options=[0, 6, 8],value=(0, 6))
 X = dataset.iloc[:, start_X:end_X].values
 st.write(X)
-start_Y1, end_Y1 = st.sidebar.select_slider('Select Range?',options=[0, 6, 8],value=(end_X, 7))
+start_Y1, end_Y1 = st.sidebar.select_slider('Select Range?',options=[0, 6, 8],value=(end_X, end_X+1))
 Y1 = dataset.iloc[:, start_Y1:end_Y1].values
 st.write(Y1)
-start_Y2, end_Y2 = st.sidebar.select_slider('Select Range?',options=[0, 6, 8],value=(end_Y1, 8))
+start_Y2, end_Y2 = st.sidebar.select_slider('Select Range?',options=[0, 6, 8],value=(end_Y1, end_Y1+1))
 Y2 = dataset.iloc[:, start_Y2:end_Y2].value
 st.write(Y2)
 
