@@ -17,7 +17,7 @@ st.write(hasil)
 # variable
 nilai_list1 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[0, 6])
 nilai_list2 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[6, 7])
-nilai_list3 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[6, 7])
+nilai_list3 = st.multiselect('What are your favorite colors',[0, 1, 2, 3, 4, 5, 6, 7, 8],[7, 8])
 st.write(nilai_list1, nilai_list2, nilai_list3)
 
 X = dataset.iloc[:, 0:6].values
