@@ -23,5 +23,9 @@ Y1 = dataset.iloc[:, start_Y1:end_Y1].values
 Y2 = dataset.iloc[:, start_Y2:end_Y2].values
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
+st.beta_column(2)
+st.bar_chart(Y1)
 st.write(Y1)
+st.beta_column(2)
+st.bar_chart(Y2)
 st.write(Y2)
