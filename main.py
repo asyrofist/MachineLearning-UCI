@@ -15,10 +15,13 @@ hasil = dataset.head()
 st.write(hasil)
 
 # variable
-X = dataset.iloc[:, 0:6].values
-Y1 = dataset.iloc[:, 6:7].values
-Y2 = dataset.iloc[:, 7:8].values
-nilai_list = st.multiselect('What are your favorite colors',(X, Y1, Y2),(X))
+start_X, end_X = st.select_slider('Select range?',options=[0:8],value=(0, 6))
+start_Y1, end_Y1 = st.select_slider('Select range?',options=[0:8],value=(end_X, end_X+1))
+start_Y2, end_Y2 = st.select_slider('Select range?',options=[0:8],value=(end_Y1, end_Y1+1))
+X = dataset.iloc[:, start_X:end_X].values
+Y1 = dataset.iloc[:, start_Y1:end_Y1].values
+Y2 = dataset.iloc[:, start_Y2:end_Y2].values
+nilai_list = st.multiselect('What are your favorite colors',[X, Y1, Y2],[X])
 st.dataframe(nilai_list)
 
 Y1 = Y1.reshape(len(Y1), 1)
