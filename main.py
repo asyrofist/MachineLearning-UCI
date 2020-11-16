@@ -25,10 +25,11 @@ Y2 = dataset.iloc[:, start_Y2:end_Y2].values
 Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
 
-st.subheader("Data Parameter")
-fig, ax = plt.subplots()
+col1, col2 = st.beta_columns([2,2])
+pic0, ax = plt.subplots()
 ax.hist(X, bins=20)
-st.pyplot(fig)
+col1.pyplot(pic0)
+col2.write(X)
 
 col3, col4 = st.beta_columns([3,1])
 pic1, ax = plt.subplots()
@@ -38,6 +39,6 @@ col4.write(Y1)
 
 col5, col6 = st.beta_columns([3,1])
 pic2, ax = plt.subplots()
-ax.hist(X, bins=20)
+ax.hist(Y2, bins=20)
 col5.pyplot(pic2)
 col6.write(Y2)
