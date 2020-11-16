@@ -9,10 +9,13 @@ Berikut ini algoritma yang digunakan untuk Dataset UCI
 """)
 
 st.header("UCI Dataset")
-option = st.sidebar.selectbox('How would you like to be contacted?',['diagnosis', 'yeast', 'wine'])
-dataset = pd.read_csv('data/'+option+'.data', header = None, delimiter = r"\s+", encoding = "utf-16")
+file_data = st.sidebar.selectbox('How would you like to be contacted?',['diagnosis', 'yeast', 'wine'])
+dataset = pd.read_csv('data/'+file_data+'.data', header = None, delimiter = r"\s+", encoding = "utf-16")
 hasil = dataset.head()
 st.write(hasil)
+
+options = st.multiselect('What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue'],['Yellow', 'Red'])
+st.write('You selected:', options)
 
 X = dataset.iloc[:, 0:6].values
 Y1 = dataset.iloc[:, 6:7].values
