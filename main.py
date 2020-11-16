@@ -79,15 +79,13 @@ st.write(X)
 
 st.header("Create and Train the Classifier for Y1")
 X1_train, X1_test, Y1_train, Y1_test = train_test_split(X, Y1, test_size = 0.2, random_state = 4)
-X1_train  = np.asarray(X1_train).astype(np.float64)
-Y1_train  = np.asarray(Y1_train).astype(np.float64)
 
 # model
 clf_ann = Sequential()
 clf_ann.add(Dense(3, activation = 'relu', kernel_initializer='glorot_uniform', input_dim = 6)) # First Hidden Layer
 clf_ann.add(Dense(1, activation = 'sigmoid', kernel_initializer='glorot_uniform')) # Output Layer
 clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy']) # Compile the ANN
-clf_ann.fit(X1_train, Y1_train, batch_size = 5, epochs = 200) # Train the ANN on the Training Set
+clf_ann.fit((X1_train).astype(np.float32), (Y1_train).astype(np.float32), batch_size = 5, epochs = 200) # Train the ANN on the Training Set
 
 # #prediction
 # Y1_pred = clf_ann.predict(X1_test) # Test the ANN on the Test Data
