@@ -4,9 +4,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
+
 
 # dataset
 st.write("""
@@ -52,8 +54,18 @@ st.header("Preprocess the Data")
 le_Y = LabelEncoder()
 Y1 = le_Y.fit_transform(Y1)
 Y2 = le_Y.transform(Y2)
-st.write(Y1)
-st.write(Y2)
+
+col6, col7 = st.beta_columns([3,1])
+pic3, ax = plt.subplots()
+ax.hist(Y1, bins=20)
+col6.pyplot(pic3)
+col7.write(Y1)
+
+col8, col9 = st.beta_columns([3,1])
+pic4, ax = plt.subplots()
+ax.hist(Y2, bins=20)
+col8.pyplot(pic4)
+col9.write(Y2)
 
 le_X = LabelEncoder()
 le_X.fit(X[:, 1])
@@ -69,22 +81,13 @@ st.header("Create and Train the Classifier for Y1")
 X1_train, X1_test, Y1_train, Y1_test = train_test_split(X, Y1, test_size = 0.2, random_state = 4)
 X2_train, X2_test, Y2_train, Y2_test = train_test_split(X, Y2, test_size = 0.2, random_state = 4)
 
-# First Hidden Layer
-clf_ann.add(Dense(output_dim = 3, init = 'uniform', activation = 'relu', input_dim = 6))
-
-# Output Layer
-clf_ann.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
-
-# Compile the ANN
-clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-
-# Train the ANN on the Training Set
-clf_ann.fit(X1_train, Y1_train, batch_size = 5, nb_epoch = 200)
-
-# Test the ANN on the Test Data
-Y1_pred = clf_ann.predict(X1_test)
+# model
+clf_ann = Sequential()
+clf_ann.add(Dense(output_dim = 3, init = 'uniform', activation = 'relu', input_dim = 6)) # First Hidden Layer
+clf_ann.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid')) # Output Layer
+clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy']) # Compile the ANN
+clf_ann.fit(X1_train, Y1_train, batch_size = 5, nb_epoch = 200) # Train the ANN on the Training Set
+Y1_pred = clf_ann.predict(X1_test) # Test the ANN on the Test Data
 Y1_pred = (Y1_pred > 0.5)
-
-from sklearn.metrics import accuracy_score, confusion_matrix
 akurasi = accuracy_score(Y1_test, Y1_pred)
 st.write(akurasi)
