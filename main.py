@@ -29,8 +29,7 @@ Y2 = Y2.reshape(len(Y2), 1)
 
 # Create distplot with custom bin_size
 st.subheader("X Parameter")
-pic0 = ff.create_distplot(X, [0,1,2,3,4])
-st.plotly_chart(pic0, use_container_width=True)
+st.bar_chart(X)
 
 st.subheader("Y1 Parameter")
 col3, col4 = st.beta_columns([3,1])
