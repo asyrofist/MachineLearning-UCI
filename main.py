@@ -3,7 +3,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
-
+from sklearn.model_selection import train_test_split
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
 
 # dataset
 st.write("""
@@ -28,18 +31,17 @@ Y1 = Y1.reshape(len(Y1), 1)
 Y2 = Y2.reshape(len(Y2), 1)
 
 
-# Create distplot with custom bin_size
-st.subheader("X Parameter")
+#X Parameter
 st.write(X)
 
-st.subheader("Y1 Parameter")
+#Y1 Parameter
 col3, col4 = st.beta_columns([3,1])
 pic1, ax = plt.subplots()
 ax.hist(Y1, bins=20)
 col3.pyplot(pic1)
 col4.write(Y1)
 
-st.subheader("X Parameter")
+# X Parameter
 col5, col6 = st.beta_columns([3,1])
 pic2, ax = plt.subplots()
 ax.hist(Y2, bins=20)
@@ -63,3 +65,26 @@ X[:, 4] = le_X.transform(X[:, 4])
 X[:, 5] = le_X.transform(X[:, 5])
 st.write(X)
 
+st.header("Create and Train the Classifier for Y1")
+X1_train, X1_test, Y1_train, Y1_test = train_test_split(X, Y1, test_size = 0.2, random_state = 4)
+X2_train, X2_test, Y2_train, Y2_test = train_test_split(X, Y2, test_size = 0.2, random_state = 4)
+
+# First Hidden Layer
+clf_ann.add(Dense(output_dim = 3, init = 'uniform', activation = 'relu', input_dim = 6))
+
+# Output Layer
+clf_ann.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid'))
+
+# Compile the ANN
+clf_ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+# Train the ANN on the Training Set
+clf_ann.fit(X1_train, Y1_train, batch_size = 5, nb_epoch = 200)
+
+# Test the ANN on the Test Data
+Y1_pred = clf_ann.predict(X1_test)
+Y1_pred = (Y1_pred > 0.5)
+
+from sklearn.metrics import accuracy_score, confusion_matrix
+akurasi = accuracy_score(Y1_test, Y1_pred)
+st.write(akurasi)
